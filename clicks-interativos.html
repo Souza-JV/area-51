@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicks Interativos</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100vw;
+            height: 100vh;
+            font: normal 1em arial;
+            background-image: linear-gradient(to top ,gray, lightgray);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            background-color: lightskyblue;
+            width: 75vw;
+            height: 75vh;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.281);
+
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            gap: 20px;
+        }
+
+        #hover > h1 , main > h1 {
+            text-align: center;
+            color: white;
+            width: 70vw;
+        }
+
+        .bloco {
+            color: black;
+            background-color: white;
+            width: 100px;
+            height: 100px;
+            transition: all .3s ease;
+            cursor: pointer;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quadro {
+            width: 400px;
+            height: 40vh;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            gap: 20px;
+
+        }
+
+        #hover > h1 {
+            color: white;
+        }
+
+        .bloco:hover {
+            background-color: gray;
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Sabe oque eu acho de você?</h1>
+        <div class="quadro">
+            <div class="bloco" id="hover"><h1>Eu</h1></div>
+            <div class="bloco" id="hover"><h1>Te</h1></div>
+            <div class="bloco" id="hover"><h1>Amo!</h1></div>
+            <div class="bloco" class="" id="clicar1"></div>
+            <div class="bloco" id="clicar2"></div>
+            <div class="bloco" id="clicar3"></div>
+            <div id="s1" class="bloco"></div>
+            <div id="s2" class="bloco"></div>
+            <div class="bloco" id="enganei"></div>
+        </div>
+    </main>
+
+    <script>
+        let c1 = document.getElementById('clicar1')
+        let c2 = document.getElementById('clicar2')
+        let c3 = document.getElementById('clicar3')
+
+        let s1 = document.getElementById('s1')
+        let s2 = document.getElementById('s2')
+
+        c1.onclick = () => c1.innerHTML = c1.innerHTML ? '' : '<h1>Eu'
+        c2.onclick = () => c2.innerHTML = c2.innerHTML ? '' : '<h1>Te'
+        c3.onclick = () => c3.innerHTML = c3.innerHTML ? '' : '<h1>Amo!'
+
+
+        
+        s1.onclick = () => s1.innerHTML = '➡️'
+        s2.onclick = () => s2.innerHTML = '➡️'
+        let kk = document.querySelector('#enganei')
+        kk.onclick = () => {
+            kk.innerHTML = '❤️'
+            alert('Eu Te Amo!')
+        } 
+    </script>
+</body>
+</html>

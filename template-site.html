@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <title>Tamplate</title>
+    <style>           
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            font: normal 1em arial;
+        }
+
+        header {
+            background-color: gray;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.397);
+            transition: all .3s ease;
+        }
+
+        header > h1 {
+            color: white;
+            padding: 10px;
+        }
+
+        nav ul, li a {
+            display: flex;
+            list-style: none;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        #ham {
+            display: none;
+            font-size: 1.5em;
+            display: none;
+            color: white;
+            margin: 15px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        #ham:hover {
+            transform: scale(1.1);
+        }
+
+        #menu {
+            display: flex;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 600px) {
+            #menu {
+                display: none;
+                flex-direction: column;
+            }
+
+            #ham {
+                display: block;
+                order: 3;
+            }
+        }
+    </style>
+</head>
+<body onresize="mudou()">
+    <header>
+        <h1>Papas Pizaria</h1>   
+        <button onclick="ham()" id="ham"><i class="fa-solid fa-bars"></i></button>     
+        <nav> 
+            <ul id="menu">
+                <li><a href="#" target="_blank">Inicio</a></li>
+                <li><a href="#" target="_blank">Cardapio</a></li>
+                <li><a href="#" target="_blank">Entre em contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    </main>
+    <footer>
+
+    </footer>
+
+    <script>
+        let menu = document.querySelector('#menu')
+
+        function mudou() {
+            if (window.innerWidth >= 601) {
+                menu.style.display = 'flex'
+            } else {
+                menu.style.display = 'none'
+            }
+        }
+
+        function ham() {
+            menu.style.display = menu.style.display == 'flex' ? 'none' : 'flex'
+            
+            
+        }
+    </script>
+</body>
+</html>

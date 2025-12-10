@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Comissão</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            background-color: #122E40;
+            width: 100vw;
+            height: 100vh;
+            font: normal 1em arial;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all .3s ease
+        }
+
+        section {
+            width: 60vw;
+            min-width: 80%;
+            height: 60vh;
+            background-color: #274B59;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.24);
+            font-size: 2em;
+            padding: 30px;
+
+            display: flex;
+            justify-content: center;
+            flex-flow: column wrap;
+            gap: 20px;
+
+        }
+
+        h1 {
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #valor, #comissao {
+            background-color: #D0E5F2;
+            border: 2px solid #122E40;
+            color: #122E40;
+            width: 150px;
+            height: 30px;
+            padding: 5px;
+            
+        }
+
+        #botaos {
+            display: flex;
+            justify-content: center;
+            flex-direction: row-reverse;
+            gap: 10px;
+        }
+
+        button {
+            background-color: #122E40;
+            color: white;
+            font: normal 0.7em arial;
+            border: 1px solid #D0E5F2;
+            border-radius: 5px;
+            width: 150px;
+            height: 40px;
+            align-self: center;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4e6e;
+        }
+
+        #resultado {
+            font-size: .7em;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Calculador de Comissão</h1>
+        <p>Valor feito: <input type="text" name="total" id="valor" placeholder="R$00,00" oninput="formatar(this)"></p>
+        <p>Comissão: <input type="number" name="comissao" id="comissao" placeholder="0.0"></p>
+        <div id="botaos">
+            <button onclick="calcular()">Calcular</button>
+            <button onclick="limpar()">Limpar</button>
+        </div>
+
+        <p id="resultado"></p>
+    </section>
+
+    <script>
+        function calcular() {
+            let valor = Number(document.querySelector('#valor').value)
+            let comissao = Number(document.querySelector('#comissao').value)
+            let resultado = document.querySelector('#resultado')
+        
+            let conta = ((comissao/100) * valor)
+
+            if (conta === 0) {
+                resultado.textContent = '[ERRO] Coloque um numero valido'
+            } else {
+                resultado.textContent = `Você fez ${conta} reais este mês`
+            }
+        }
+
+        function limpar() {
+            document.querySelector('#valor').value = ""
+            document.querySelector('#comissao').value = ""
+            document.querySelector('#resultado').textContent = ""
+        }
+
+        function formatar(campo) {
+            let v = campo.value;
+            v = v.replace(/\D/g, "");
+            v = (v / 100).toFixed(2) + "";
+            campo.value = v;
+        }
+    </script>
+</body>
+</html>
