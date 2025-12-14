@@ -29,11 +29,9 @@
         }
 
         main {
-            background-color: var(--page);
-            padding: 30px;
-            border-radius: 8px;
+            height: 100vh;
+            margin-top: 20px;
             text-align: center;
-
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -41,13 +39,21 @@
             
         }
 
+        #caixa {
+            width: 40vw;
+            min-width: 400px;
+            height: 200px;
+            background-color: var(--page);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
         input#tarefa {
             border: none;
-            width: 200px;
             padding: 10px;
             border-radius: 5px;
             background-color: lightgray;
-            color: white;
+            color: black;
             margin-top: 20px;
             text-align: center;
         }
@@ -70,24 +76,101 @@
             border: 1px solid var(--destaque);
         }
 
-        p {
-            margin-top: 20px;
+        ul#caixa-lista {
+            display: flex;
+            flex-direction: column-reverse;
         }
 
+        #caixa-lista li {
+            background-color: var(--page);
+            width: 40vw;
+            min-width: 400px;
+            height: 100px;
+            margin-top: 20px;
+            text-align: start;
+            padding: 20px;
+            list-style: none;
+            border-radius: 8px;
+
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            
+        }
+
+        #caixa-lista li:hover {
+            background-color: rgba(255, 1, 1, 0.568);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <main>
-        <h1>Oque você quer fazer?</h1>
-        <input id="tarefa" type="text" placeholder="Eu quero fazer...">
-        <button id="marcar" onclick="enviar()">Enviar</button>
-        <p id="resposta"></p>
+        <div id="caixa">
+            <h1>Oque você quer fazer?</h1>
+            <input id="tarefa" type="text" placeholder="Eu quero fazer..." maxlength="80">
+            <button id="marcar">Enviar</button>
+        </div>
+        <ul id="caixa-lista">
+            
+        </ul>
     </main>
 
     <script>
-        function enviar() {
-            
+        let lista = document.querySelector('#caixa-lista')
+        let input = document.querySelector('#tarefa')
+        let botao = document.querySelector('#marcar')
+
+        // carrega lista quando abrir a pagina
+        carregar()
+
+        // evento botao
+        botao.addEventListener('click', () => {
+        
+        // se o input vazio, para
+            if (input.value === '')return
+                    const li = document.createElement('li')
+
+                    li.innerText = input.value
+
+                    // remove ao clicar e salva
+                    li.addEventListener('click', () => {
+                        li.remove()
+                        salvar()
+                    })
+                    lista.appendChild(li)
+                    salvar() // salva ao adicionar
+                    input.value = ''                 
+        })
+
+        //======FUNCOES=======
+        function salvar() {
+            const itens = []
+
+            document.querySelectorAll('#caixa-lista li').forEach(li => {
+                itens.push(li.innerText)
+            })
+                localStorage.setItem('checklist', JSON.stringify(itens))
         }
+
+        function carregar() {
+            const dados = JSON.parse(localStorage.getItem('checklist'))
+
+            if (!dados) return
+
+            dados.forEach(texto => {
+                const li = document.createElement('li')
+                li.innerText = texto
+
+                li.addEventListener('click', () => {
+                    li.remove()
+                    salvar()
+                })
+
+                lista.appendChild(li)
+            })
+        }
+
+        //obs: uma maneira mais resumida sobre tudo
     </script>
 </body>
 </html>
