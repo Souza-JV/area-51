@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-List</title>
+    <style>
+
+        :root {
+            --destaque: rgb(13, 38, 44);
+            --page: rgb(2, 74, 87);
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: linear-gradient(to left, rgb(13, 38, 44), rgb(3, 43, 59));
+            font: normal 1em arial;
+            color: white;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            background-color: var(--page);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            
+        }
+
+        input#tarefa {
+            border: none;
+            width: 200px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: lightgray;
+            color: white;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button#marcar {
+            padding: 10px;
+            width: 100px;
+            margin-top: 20px;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+            transition: all .3s ease;
+        }
+
+        button#marcar:hover {
+            background-color: lightgray;
+            transform: scale(1.03);
+            border: 1px solid var(--destaque);
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Oque você quer fazer?</h1>
+        <input id="tarefa" type="text" placeholder="Eu quero fazer...">
+        <button id="marcar" onclick="enviar()">Enviar</button>
+        <p id="resposta"></p>
+    </main>
+
+    <script>
+        function enviar() {
+            
+        }
+    </script>
+</body>
+</html>
