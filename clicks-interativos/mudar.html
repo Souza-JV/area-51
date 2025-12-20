@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temas</title>
+    <style>
+        :root {
+            --fundo-noite1: rgb(46, 46, 255);
+            --fundo-noite2: rgb(39, 39, 158);
+            --card-noite: rgb(50, 107, 173);
+
+            --fundo-dia1: rgb(161, 114, 10);
+            --fundo-dia2:rgb(145, 102, 11);
+            --card-dia: rgb(99, 99, 75);
+            
+        }
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: linear-gradient(to top, var(--fundo-dia1), var(--fundo-dia2));
+            color: white;
+            height: 100vh;
+            font: normal 1em arial;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            background-color: var(--card-dia);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+
+        }
+
+        .noite {
+            background-image: linear-gradient(to top, var(--fundo-noite1), var(--fundo-noite2));
+        }
+
+        .noite > main {
+            background-color: var(--card-noite);
+        }
+    </style>
+</head>
+<body>
+        <main>
+            <h1>A cor vai mudar conforme a hora</h1>
+            <h2 id="tempo"></h2>
+        </main>
+    <script>
+        let tempo = document.getElementById('tempo')
+
+        function atualizar() {
+            let agora = new Date()
+            let horas = agora.getHours()
+            let minutos = agora.getMinutes()
+
+            // tema
+            if (horas >= 6 && horas < 18) {
+                document.body.classList.remove('noite')
+            } else {
+                document.body.classList.add('noite')
+            }
+
+
+            // formatar
+            if (minutos < 10) {
+                tempo.innerHTML = `Agora são ${horas}:0${minutos}`
+            } else {
+                tempo.innerHTML = `Agora são ${horas}:${minutos}`
+
+            }
+        }
+        
+        atualizar()
+        setInterval(atualizar, 1000)
+    </script>
+</body>
+</html>
