@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de botao</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="botao-vermelho.png" type="image/x-icon">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font: bolder 1em arial;
+            color: white;
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(to left, rgb(85, 85, 167), rgb(165, 113, 165));
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section {
+            background-color: rgb(127, 151, 161);
+            width: 60vw;
+            height: 40vh;
+            border-radius: 5px;
+
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: column;
+
+            box-shadow: rgba(0, 0, 0, 0.178) 5px 5px 5px;
+            padding: 50px;
+            gap: 30px;
+        }
+
+        section > h1{
+            text-decoration: underline;        
+            font-weight: bolder;    
+        }
+
+        section > div > i {
+            font: normal 100px arial;
+            cursor: pointer;
+        }
+
+        #off {
+
+        }
+
+        #onn {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Teste com botão</h1>
+        <div onclick="teste()">
+            <i id="off" class="fa-solid fa-toggle-off"></i>
+            <i id="onn" class="fa-solid fa-toggle-on"></i>
+            <p id="testes"></p>
+        </div>
+    </section>
+
+    <script>
+        function teste() {
+            var off = document.getElementById('#off')
+            var on = document.getElementById('#onn')
+            var t = document.getElementById('#testes')
+
+            
+        }
+    </script>
+</body>
+</html>
