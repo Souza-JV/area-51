@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(76, 83, 83);
+            color: white;
+            font: normal 1em arial;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div {
+            width: 60vw;
+            max-width: 400px;
+            height: 40vh;
+            background-color: rgb(156, 172, 177);
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.377) 5px 5px 5px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            text-shadow: rgba(0, 0, 0, 0.226) 2px 2px 2px;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            font-size: 4em;
+            gap: 20px;
+        }
+
+        #zer {
+            font-size: 3em;
+        }
+
+        .bot {
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        .bot:hover {
+            transform: scale(1.1);
+            text-shadow: rgba(0, 0, 0, 0.226) 2px 2px 2px;
+        }
+
+        #num {
+            transition: all 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contado de Numeros</h1>
+    <div>
+            <ul>
+                <li id="ant" class="bot"><i class="fa-solid fa-caret-left"></i></li>
+                <li id="num">0</li>
+                <li id="pro" class="bot"><i class="fa-solid fa-caret-right"></i></li>
+            </ul>
+        <p id="zer" class="bot"><i class="fa-solid fa-square"></i></p>
+    </div>
+</body>
+    <script>
+        let ant = document.getElementById('ant')
+        let num = document.getElementById('num')
+        let pro = document.getElementById('pro')
+        let zer = document.getElementById('zer')
+
+        let getNum = () => Number(num.innerText) //cria uma função para pegar o valor
+
+        function animar() {
+            num.style.transform = 'scale(1.5)'
+
+        setTimeout(() => { //animação de pulsar no js
+            num.style.transform = 'scale(1)'
+        }, 200) 
+        }
+
+
+        ant.onclick = () => {
+            num.innerText = getNum() - 1
+            animar()
+        } 
+
+        pro.onclick = () => {
+            num.innerText = getNum() + 1 
+            animar()
+        }
+
+        zer.onclick = () => {
+            num.innerText = 0 
+            animar()
+        }
+
+        
+
+    </script>
+</html>

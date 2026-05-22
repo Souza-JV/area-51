@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste de botao</title>
     <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="botao-vermelho.png" type="image/x-icon">
     <style>
         * {
             padding: 0px;
@@ -49,35 +48,30 @@
         section > div > i {
             font: normal 100px arial;
             cursor: pointer;
+            transition: all 1s ease;
         }
 
-        #off {
-
+        .fa-toggle-on {
+            color: skyblue;
         }
-
-        #onn {
-            display: none;
-        }
-
     </style>
 </head>
 <body>
     <section>
         <h1>Teste com botão</h1>
-        <div onclick="teste()">
-            <i id="off" class="fa-solid fa-toggle-off"></i>
-            <i id="onn" class="fa-solid fa-toggle-on"></i>
-            <p id="testes"></p>
+        <div onclick="teste()" id="teste">
+            <i id="botao" class="fa-solid fa-toggle-off"></i>
         </div>
     </section>
 
     <script>
         function teste() {
-            var off = document.getElementById('#off')
-            var on = document.getElementById('#onn')
-            var t = document.getElementById('#testes')
+            let botao = document.getElementById('botao')
 
-            
+            botao.addEventListener('click', () => {
+                botao.classList.toggle('fa-toggle-on')
+                botao.classList.toggle('fa-toggle-off')
+            })
         }
     </script>
 </body>

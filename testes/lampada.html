@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lampada</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body, .dia {
+            background-image: linear-gradient(to left, rgb(214, 214, 96), rgb(248, 200, 112));
+            width: 100vw;
+            height: 100vh;
+            font: normal 1em arial;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .noite {
+            background-image: linear-gradient(to left, rgb(93, 93, 214), rgb(172, 81, 172));
+        }
+
+        #estado {
+            font-size: 3em;
+        }
+
+        #botao {
+            font-size: 5em;
+            transition: all .3s ease;
+        }
+
+        #botao:hover {
+            transform: scale(1.1);
+        }
+
+
+    </style>
+</head>
+<body class="dia">
+    <h1 id="estado">ACESA!</h1>
+    <i id="botao" class="fa-solid fa-lightbulb"></i>
+    <script>
+        let botao = document.getElementById('botao')
+        let es = document.getElementById('estado')
+        let body = document.body
+
+        botao.addEventListener ('click', () => {
+            body.classList.toggle ('noite')
+
+            es.innerText = es.innerText === 'ACESA!' ? 'DESLIGADO!' : 'ACESA!'
+
+            botao.classList.toggle ('fa-regular')
+            botao.classList.toggle ('fa-solid')
+        })
+    </script>
+</body>
+</html>
