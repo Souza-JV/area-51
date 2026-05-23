@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronometro</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            font: normal 1em arial;
+            color: white;
+            background-color: rgb(62, 87, 97);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #painel {
+            width: 60vw;
+            height: 40vh;
+            background-color: rgb(161, 209, 211);
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.301) 5px 5px 5px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #painel > #num{
+            font-size: 3em;
+            user-select: none;
+        }
+
+        .but {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 2em;
+            padding: 10px;
+
+            transition: all .3s ease;
+        }
+
+        .but:hover {
+            text-shadow: none;
+            transform: scale(1.1);
+            text-shadow: rgba(0, 0, 0, 0.315) 2px 2px 2px;
+        }
+
+        .but > i {
+            cursor: pointer;
+        }
+
+        button:disabled, button:disabled:hover{
+            opacity: 0.5;
+            cursor: unset;
+            text-shadow: none;
+            transform: scale(1);
+        }
+
+        button:active {
+    transform: scale(0.95);
+}
+    </style>
+</head>
+<body>
+    <h1>CRONOMETRO</h1>
+    <section id="painel">    
+        <span id="num">0</span>
+        <div id="bot">
+            <button id="play" class="but">
+                <i id="playPause" class="fa-solid fa-caret-right"></i>
+            </button>
+            <!-- <button>
+                <i class="fa-solid fa-pause"></i>
+            </button> -->
+            <button id="reset" class="but">
+                <i class="fa-solid fa-arrow-rotate-left"></i>
+            </button>
+        </div>
+    </section>
+</body>
+<script>
+    let num = document.getElementById('num')
+    let play = document.getElementById('play')
+    let playPause = document.getElementById('playPause')
+    let reset = document.getElementById('reset')
+    let tempo
+    let rodando = false
+    let contador = 0
+
+    //let getNum = () => Number(num.innerText) //recebe o numero //subistituir por variavel "contador"
+
+    let verificarReset = () => { //desabilita o botao de reset
+        if(rodando === false){
+            reset.disabled = true
+            playPause.classList.remove('fa-pause')
+            playPause.classList.add('fa-caret-right')
+        } else {
+            reset.disabled = false
+        }
+    }
+
+    play.onclick = () => {
+        if(!rodando) {
+            reset.disabled = false
+
+            tempo = setInterval(() => {
+                contador++
+                num.innerHTML = contador
+                
+            }, 1000)            
+
+            rodando = true
+
+            playPause.classList.remove('fa-caret-right')
+            playPause.classList.add('fa-pause')
+        } else {
+            clearInterval(tempo)
+
+            rodando = false
+
+            playPause.classList.remove('fa-pause')
+            playPause.classList.add('fa-caret-right')
+        }
+    }
+
+    reset.addEventListener('click', () =>{
+        clearInterval(tempo)
+        num.innerText = 0
+        rodando = false
+        verificarReset()
+    })
+    verificarReset()
+</script>
+</html>

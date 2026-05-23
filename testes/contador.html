@@ -25,7 +25,7 @@
             align-items: center;
         }
 
-        div {
+        .container {
             width: 60vw;
             max-width: 400px;
             height: 40vh;
@@ -34,8 +34,8 @@
             box-shadow: rgba(0, 0, 0, 0.377) 5px 5px 5px;
 
             display: flex;
-            flex-direction: column;
             justify-content: center;
+            flex-direction: column;
             align-items: center;
             gap: 20px;
         }
@@ -45,15 +45,15 @@
             text-shadow: rgba(0, 0, 0, 0.226) 2px 2px 2px;
         }
 
-        ul {
-            list-style: none;
-            display: flex;
+        button {
+            background-color: transparent;
+            border: none;
             font-size: 4em;
-            gap: 20px;
+            color: white
         }
 
-        #zer {
-            font-size: 3em;
+        span {
+            font-size: 5em;
         }
 
         .bot {
@@ -69,17 +69,31 @@
         #num {
             transition: all 1s ease;
         }
+
+        button:disabled, button:disabled:hover {
+            opacity: .5;
+            cursor: unset;
+            transform: scale(1);
+            text-shadow: none;
+        }
     </style>
 </head>
 <body>
     <h1>Contado de Numeros</h1>
-    <div>
-            <ul>
-                <li id="ant" class="bot"><i class="fa-solid fa-caret-left"></i></li>
-                <li id="num">0</li>
-                <li id="pro" class="bot"><i class="fa-solid fa-caret-right"></i></li>
-            </ul>
-        <p id="zer" class="bot"><i class="fa-solid fa-square"></i></p>
+    <div class="container">
+        <div class="fuck">
+            <button id="ant" class="bot">
+                <i class="fa-solid fa-caret-left"></i>
+            </button>
+            <span id="num">0</span>
+            <button id="pro" class="bot">
+                <i class="fa-solid fa-caret-right"></i>
+            </button>
+        </div>
+
+        <button id="zer" class="bot">
+            <i class="fa-solid fa-square"></i>
+        </button>
     </div>
 </body>
     <script>
@@ -98,23 +112,33 @@
         }, 200) 
         }
 
+        function verificar() {
+            if(getNum() === 0){
+                zer.disabled = true
+            } else {
+                zer.disabled = false
+            }
+        }
 
         ant.onclick = () => {
             num.innerText = getNum() - 1
             animar()
+            verificar()
         } 
 
         pro.onclick = () => {
             num.innerText = getNum() + 1 
             animar()
+            verificar()
         }
 
         zer.onclick = () => {
             num.innerText = 0 
             animar()
+            verificar()
         }
 
-        
 
+        verificar()
     </script>
 </html>
