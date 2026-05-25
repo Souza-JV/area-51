@@ -11,6 +11,7 @@
 }
 
 body { /* Corpo */
+    width: 100%;
     background-color: white;
     font: normal 1em arial;
 
