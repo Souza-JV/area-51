@@ -24,6 +24,8 @@ body { /* Corpo */
 
 .logo { /* Logo tipo */
     margin: 20px;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .logo i {
@@ -53,13 +55,13 @@ section {
     height: min-content;
     min-height: 400px;
     background-color: gray;
-  
+    
 
     background-image: url(./imagem/bannerTesouras.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-position: fixed;
+    
 
     display: flex;
     flex-direction: column;
