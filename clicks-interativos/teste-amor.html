@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/ac52fd1507.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Amor</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        background-color: slateblue;
+        color: white;
+        font: normal 1.5em arial;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        font: normal 1.5em arial;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Você me ama?</h1>
+    <div>
+      <button onclick="coracao('sim')">
+        <i class="fa-solid fa-heart"></i> Sim
+      </button>
+      <button onclick="coracao('nao')">
+        <i class="fa-solid fa-heart-crack"></i> Não
+      </button>
+    </div>
+    <p id="mensagem"></p>
+
+    <script>
+      function coracao(resposta) {
+        let msg = document.querySelector("#mensagem");
+
+        if (resposta == "sim") {
+          msg.innerHTML = "Eu também te amo!";
+        } else if (resposta == "nao") {
+          msg.innerHTML = "Então eu te odeio!";
+        }
+      }
+    </script>
+  </body>
+</html>

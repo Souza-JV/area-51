@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clique</title>
+    <style>
+        body {
+            background-color: slategrey;
+            font: normal 1em arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 98vh;
+        }
+
+        #botao {
+            border: 1px solid rgb(65, 64, 64);
+            padding: 10px;
+            height: 55px;
+            width: 100px;
+            border-radius: 50px;
+            font: normal 2em arial;
+            transition: all .2s ease;
+
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+
+        .ligado {
+            background-color: darkgray;
+            color: white;
+        }
+
+        .ligado:hover {
+            background-color: gray;
+            transform: scale(1.1);
+        }
+
+        .desligado {
+            background-color: rgb(2, 110, 110);
+            color: white;
+        }
+
+        .desligado:hover {
+            background-color: darkcyan;
+            transform: scale(1.1);
+        }
+
+        div {
+            background-color: white;
+            padding: 20px;
+            border-radius: 50%;
+            border: 1px solid rgb(71, 71, 71);
+            
+
+
+            transition: all .5s ease;
+            
+        }
+
+        .ddesligado {
+            transform: translateX(1.2em);
+        }
+    </style>
+</head>
+<body>
+    <button class="ligado" id="botao">
+        <div id="di" class="dligado"></div>
+    </button>
+
+    <script>
+        let b = document.querySelector('#botao')
+        let d = document.querySelector('#di')
+        b.onclick = () => {
+            b.classList.toggle('desligado')
+            b.classList.toggle('ligado')
+            //b.innerHTML = b.innerHTML === 'Ligado' ? 'Desligado' : 'Ligado'
+            if (b.classList.contains('desligado')) {
+                d.classList.add('ddesligado')
+                d.classList.remove('dligado')
+            } else {
+                d.classList.add('dligado')
+                d.classList.remove('ddesligado')
+            }
+        }
+    </script>
+</body>
+</html>

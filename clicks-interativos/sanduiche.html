@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sanduiche</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: cadetblue;
+            width: 100vw;
+            height: 100vh;
+            font: normal 2em arial;
+
+            display: grid;
+            grid-template-columns: auto 50vw auto;
+        }
+
+        header {
+            background-color: darkcyan;
+            height: 50vh;
+            grid-column: 2;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-align: end;
+
+            
+        }
+
+        .botao {
+            color: white;
+            font-size: 1em;
+            background-color: transparent;
+            border: none;
+            margin: 10px;
+            transition: transform .3s;
+        }
+
+        .botao:hover {
+            color: antiquewhite;
+            transform: scale(1.1);
+        }
+
+        nav {
+            opacity: 0;
+            transform: translateY(-15px);
+            transition: all .3s ease;
+            pointer-events: none;
+        }
+
+        nav.ativo {
+            opacity: 1;
+            transform: translateY(0);            
+            pointer-events: auto;
+        }
+
+        a, li {
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            list-style: none;
+            padding: 10px;
+        }
+
+        a:hover, li:hover {
+            color: antiquewhite;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>        
+            <button onclick="hamburguer()" class="botao"><i class="fa-solid fa-plus"></i></button><!-- <i class="fa-solid fa-minus"></i> -->
+            <nav class="menu" id="menu">
+                <ul>
+                    <li><a target="_blank" href="https://www.youtube.com/watch?v=MCAdbUaMlAE">Youtube</a></li>
+                    <li><a href="">Instagram</a></li>
+                    <li><a href="">WhatsApp</a></li>
+                </ul>
+            </nav>
+    </header>
+
+    <script>
+        function hamburguer() {
+            let botao = document.querySelector('.botao')
+            let menu = document.querySelector('#menu')
+
+            menu.classList.toggle('ativo')
+
+            botao.innerHTML = menu.classList.contains('ativo')
+                ? '<i class="fa-solid fa-minus"></i>'
+                : '<i class="fa-solid fa-plus"></i>'
+        }
+    </script>
+</body>
+</html>

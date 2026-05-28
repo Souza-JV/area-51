@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double</title>
+    <style>
+        body {
+            width: 98vw;
+            height: 98vh;
+            background-color: cadetblue;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        div {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 2em;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #botao {
+            background-color: darkcyan;
+            color: white;
+            font: normal 1em arial;
+            border: 1px solid black;
+            border-radius: 8px;
+            transition: all .3s ease;
+            box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.568);
+        }
+
+        #botao:hover {
+            background-color: rgb(3, 172, 172);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="botao" onclick="botao()">Click</button>
+        <p id="res"></p>
+    </div>
+
+     <script>
+        let res = document.querySelector('#res')
+        
+        function botao() {
+            res.innerHTML = res.innerHTML === 'Clicado' ? 'Desligado' : 'Clicado'
+
+            /* if (res.innerHTML === 'Clicado'){
+                res.innerHTML = 'Desligado'
+            } else {
+                res.innerHTML = 'Clicado'
+            } */
+        }
+     </script>
+</body>
+</html>

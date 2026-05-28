@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>click Certificado</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: slateblue;
+            width: 98vw;
+            height: 98vh;
+            font: normal 1em arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .bo {
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: darkcyan;
+            color: white;
+            font-size: 2em;
+
+            transition: all .2s ease;
+        }
+
+        .bo:hover {
+            transform: scale(1.1);
+            background-color: rgb(1, 114, 114);
+        }
+
+        #res {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #res > p {
+            text-align: center;
+            color: white;
+            font-size: 2em;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <button class="bo" id="botao">Clique aqui</button>
+    <div id="res"></div>
+
+    <script>
+        var b = document.getElementById('botao')
+        let res = document.querySelector('#res')
+        b.onclick = () => {
+            if (b.innerHTML = 'Clique aqui') {
+                b.innerHTML = 'Voltar'
+                if (!res.querySelector('#b2')) {
+                    let b2 = document.createElement('button')
+                    b2.innerHTML = 'Clique novamente'
+                    b2.id = 'b2'
+                    b2.classList.add('bo')
+                    res.appendChild(b2)
+
+
+                    b2.onclick = () => {
+                        if (!res.querySelector('#b3')){
+                            let b3 = document.createElement('button')
+                            b3.innerHTML = 'Mais uma vez'
+                            b3.id = 'b3'
+                            b3.classList.add('bo')
+                            res.appendChild(b3)
+
+                            b3.onclick = () => {
+                                if (!res.querySelector('#msg')) {
+                                    let msg = document.createElement('p')
+                                    msg.id = 'msg'
+                                    msg.innerHTML = 'Eu te amo!!!'
+                                    res.appendChild(msg)
+                                }
+                            }
+                        }
+                    }
+                
+            } else {
+                b.innerHTML = 'Clique aqui'
+                res.innerHTML = ''
+            }
+        }
+        }
+    </script>
+</body>
+</html>

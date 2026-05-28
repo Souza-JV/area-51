@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>temas</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            width: 98vw;
+            height: 98vh;
+            font: normal 1.5em arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            color: black;
+            background-color: transparent;
+            border: none;
+            font-size: 3em;
+            transition: transform .1s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        body.dark, button.dark {
+            background-color: black;
+            color: white;
+        }
+
+        body.white, button.white {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body class="dark">
+    <main>
+        <button id="tema" class="dark" onclick="fundo()"><i class="fa-solid fa-lightbulb"></i></button>
+    </main>
+
+    <script>
+        let body = document.body
+        let tema = document.querySelector('#tema')
+
+        function fundo() {            
+            body.classList.toggle('white')
+            body.classList.toggle('dark')
+            tema.classList.toggle('white')
+            tema.classList.toggle('dark')
+            localStorage.setItem('tema', body.classList.contains('white') ? 'white' : 'dark'
+            )
+        }
+
+        window.onload = function() {
+            var temaSalvo = localStorage.getItem('tema') || 'dark'
+            body.className = temaSalvo
+            tema.className = temaSalvo
+        }
+    </script>
+</body>
+</html>
