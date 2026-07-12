@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coração</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background-color: #2d3141;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            background-color: #171f38;
+            width: 400px;
+            height: 400px;
+            border-radius: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+        }
+
+        .botao {
+            color: white;
+            background-color: transparent;
+            font-size: 3em;
+            border: none;
+
+            transition: transform .3s ease;
+        }
+
+        .botao:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .botao:active {
+            transform: scale(.9);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <button class="botao" id="coracao"><i class="fa-solid fa-heart"></i></button>
+    </main>
+
+    <script>
+        const coracao = document.getElementById('coracao')
+        const ico = document.querySelector('i')
+
+        coracao.addEventListener('click', () =>{
+            ico.classList.toggle('fa-heart')
+            ico.classList.toggle('fa-heart-crack')
+        })
+    </script>
+</body>
+</html>

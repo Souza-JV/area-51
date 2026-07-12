@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coração</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background-color: #2d3141;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            background-color: #171f38;
+            width: 400px;
+            height: 400px;
+            border-radius: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+        }
+
+        #botao {
+            font-size: 3em;
+            color: white;
+            background-color: transparent;
+            border: none;
+
+            transition: transform .3s ease;
+        }
+
+        #botao:hover {
+            transform: scale(1.1);
+            
+        }
+
+        @keyframes girar {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #ico {
+            transition: transform .3s ease;
+        }
+
+        #ico.sla {
+            animation: girar 1s linear infinite;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <main>
+        <button id="botao">
+            <i id="ico" class="fa-solid fa-fan"></i>
+        </button>
+    </main>
+    <script>
+        const botao = document.getElementById('botao')
+        const ico = document.getElementById('ico')
+
+        botao.addEventListener('click', () => {
+            ico.classList.toggle('sla')
+        })
+    </script>
+</body>
+</html>
