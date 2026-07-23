@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --back: #322155;
+            --menu: #4f51ac;
+            --destaque: #8451A6;
+            --invertido: #D8C3E0;
+        }
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            font: normal 1em arial;
+            height: 100vh;
+            background-color: var(--back);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            width: 400px;
+            background-color: var(--menu);
+            color: white;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.288);
+            padding: 20px;
+            border-radius: 20px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            text-align: center;
+        }
+
+        .banner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hub {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+            padding: 0px 20px;
+        }
+
+        .botao {
+            color: var(--invertido);
+            background-color: transparent;
+            font-size: 2em;
+            border: none;
+
+            transition: all .3s ease;
+        }
+
+        #shop:hover {
+            filter: brightness(1.1);
+            transform: scale(1.1);
+            cursor: pointer;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.37);
+        }
+
+        img {
+            width: 200px;
+            border-radius: 50%;
+            border: solid 2px var(--destaque);
+        }
+
+        .bio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 40px;
+            gap: 20px;
+        }
+
+        .bio h1 {
+            background-color: var(--back);
+            padding: 5px 40px;
+            border-radius: 10px;
+        }
+
+        #farm {
+            color: white;
+            background-color: var(--destaque);
+            padding: 5px 40px;
+            border: solid 2px var(--invertido);
+            border-radius: 10px;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.39);
+
+            font-size: 1.5em;
+            transition: all .3s ease;
+        }
+
+        #farm:hover {
+            transform: scale(1.05);
+            filter: brightness(1.05);
+            cursor: pointer;
+        }
+
+        #farm:active {
+            transform: translateX(5px) translateY(5px);
+            box-shadow: none;
+        }
+
+        .box-shop {
+            color: var(--back);
+            width: 370px;
+            background-color: var(--invertido);
+            opacity: 0;
+            padding: 20px 0px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.226);
+            transform: translateY(-1000px);
+            
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            position: fixed;
+            z-index: 2;
+
+            transition: all .3s ease;
+        }
+
+        .box-shop.ativo {
+            transform: translateY(0);
+            opacity: 0.95;
+        }
+        
+        #exit-shop {
+            color: var(--back);
+        }
+
+        #exit-shop:hover {
+            color: rgb(192, 94, 94);
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .container {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card {
+            font-size: .8em;
+            width: 350px;
+            color: white;
+            background-color: var(--back);
+            padding: 10px 20px;
+            border-radius: 10px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+
+            transition: all .3s ease;
+        }
+
+        .fim {
+            color: yellow;
+        }
+
+        .medidor {
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .card:hover {
+            background-color: var(--destaque);
+            transform: scale(1.02);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .card:active {
+            transform: scale(1);
+        }
+
+        .trofel {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="banner">
+            <div class="hub">
+                <button class="botao" id="shop">
+                <i class="fa-solid fa-basket-shopping"></i>
+                </button>
+            </div>
+            <section id="box-shop" class="box-shop">
+                <div class="hub">
+                    <button class="botao" id="exit-shop">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <h1>LOJA</h1>
+                
+                <div class="container">
+                    <article id="level1" class="card">
+                        <h1>+1 aura por click</h1>
+                        <p>50 auras</p>
+                    </article>
+                    <article id="level2" class="card">
+                        <h1>+10 aura por click</h1>
+                        <p>200 auras</p>
+                    </article>
+                    <article id="level3" class="card">
+                        <h1>+50 aura por click</h1>
+                        <p>500 auras</p>
+                    </article>
+                    <article id="level4" class="card fim">
+                        <h1>Você Ganhou<i class="fa-solid fa-award"></i></h1>
+                        <p>1.000 auras</p>
+                    </article>
+                </div>
+                <div class="medidor">
+                    <p id="auras">Aura:</p>
+                    <p id="clicks">Click:</p>
+                </div>
+            </section>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2urmJ3MEhAQddTQgnfP0oe_zWaQwerPoCe1j6EJwTXA&s" alt="">
+            <h1>CLICK E FARM AURA</h1>
+        </section>
+        <section class="bio">
+            <h1 id="aura">0</h1>
+            <button id="farm">
+                <i class="fa-solid fa-skull"></i>
+            </button>
+            <div id="trofel" class="trofel">
+                
+            </div>
+        </section>
+    </main>
+    <script>
+        //sistema de farmar aura
+        const farm = document.getElementById('farm')
+        let auraTexto = document.getElementById('aura')
+        let aura = Number(auraTexto.innerText)
+        let click = 1
+
+        let numAuras = document.getElementById('auras')
+        let clicks = document.getElementById('clicks')
+
+        function atualizarTela() {
+            auraTexto.innerText = aura
+            numAuras.innerText = `Aura: ${aura}`
+            clicks.innerText = `Click: ${click}`
+        }
+
+        farm.addEventListener('click', () => {
+            aura += click
+            atualizarTela()
+        })
+
+        //sistema de abrir e fechar aba da loja
+        const shop = document.getElementById('shop')
+        const box = document.getElementById('box-shop')
+        const exit = document.getElementById('exit-shop')
+
+        shop.addEventListener('click', () => {
+            box.classList.toggle('ativo')
+        })
+        exit.addEventListener('click', () => {
+            box.classList.toggle('ativo')
+        })
+
+        //sistema de compras
+        const level1 = document.getElementById('level1')
+        const level2 = document.getElementById('level2')
+        const level3 = document.getElementById('level3')
+        const level4 = document.getElementById('level4')
+        let trofeus = 0
+
+        function comprar(preco, ganho) {
+            if(aura >= preco) {
+                aura -= preco
+                click += ganho
+                atualizarTela()
+            }
+        }
+
+        level1.onclick = () => comprar(50, 1)
+        level2.onclick = () => comprar(200, 10)
+        level3.onclick = () => comprar(500, 50)
+        level4.onclick = () => {
+            let trofel = document.getElementById('trofel')
+            if(aura >= 1 && trofeus < 50) {
+                aura -= 1
+                trofeus++
+
+                trofel.innerHTML += '<i class="fa-solid fa-award"></i>'
+                atualizarTela()
+            }
+        }
+             
+/*  Assim ocupa muito espaço
+
+
+        level1.addEventListener('click', () =>{
+            if(aura >= 50) {
+                aura = aura - 50
+                click++
+                atualizarTela()
+            }
+        })
+        level2.addEventListener('click', () =>{
+            if(aura >= 200) {
+                aura = aura - 200
+                click += 10 
+                atualizarTela()
+            }
+        })
+        level3.addEventListener('click', () =>{
+            if(aura >= 500) {
+                aura = aura - 500
+                click += 50
+                atualizarTela()
+            }
+        })
+        level4.addEventListener('click', () =>{
+            let trofel = document.getElementById('trofel')
+            if(aura >= 1000) {
+                aura = aura - 1000
+                atualizarTela()
+
+                trofel.innerHTML += '<i class="fa-solid fa-award"></i>'
+            }
+        }) */
+    </script>
+</body>
+</html>
