@@ -3,174 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check-List</title>
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
     <style>
-
         :root {
-            --destaque: rgb(13, 38, 44);
-            --page: rgb(2, 74, 87);
+            --fundo: #6F618C;
+            --destaque: #4F3673;
+            --fundoReverso: #8a6897;
         }
 
         * {
-            margin: 0px;
             padding: 0px;
+            margin: 0px;
             box-sizing: border-box;
         }
 
         body {
-            background-image: linear-gradient(to left, rgb(13, 38, 44), rgb(3, 43, 59));
-            font: normal 1em arial;
+            background-color: var(--fundo);
             color: white;
-            height: 100vh;
+            font: normal 1em arial;
 
             display: flex;
             justify-content: center;
-            align-items: center;
+            text-align: center;
         }
 
-        main {
-            height: 100vh;
-            margin-top: 20px;
-            text-align: center;
+        #painel {
+            width: max-content;
+            margin-top: 40px;
+            background-color: var(--destaque);
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.438);
+
             display: flex;
             flex-direction: column;
+            gap: 20px;
+        }
+
+        form {
+            display: flex;
             align-items: center;
+            gap: 10px;
 
-            
         }
 
-        #caixa {
-            width: 40vw;
-            min-width: 400px;
-            height: 200px;
-            background-color: var(--page);
-            padding: 30px;
-            border-radius: 8px;
-        }
-
-        input#tarefa {
-            border: none;
-            padding: 10px;
+        #input {
+            padding: 8px;
             border-radius: 5px;
-            background-color: lightgray;
-            color: black;
-            margin-top: 20px;
+            border: none;
             text-align: center;
         }
 
-        button#marcar {
-            padding: 10px;
-            width: 100px;
-            margin-top: 20px;
-            background-color: white;
+        .botao {
+            font-size: 1.5em;
+            color: white;
+            background-color: transparent;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-
             transition: all .3s ease;
         }
 
-        button#marcar:hover {
-            background-color: lightgray;
-            transform: scale(1.03);
-            border: 1px solid var(--destaque);
+        .botao:hover {
+            transform: scale(1.1);
         }
 
-        ul#caixa-lista {
-            display: flex;
-            flex-direction: column-reverse;
+        .botao:active {
+            transform: scale(1);
         }
 
-        #caixa-lista li {
-            background-color: var(--page);
-            width: 40vw;
-            min-width: 400px;
-            height: 100px;
-            margin-top: 20px;
-            text-align: start;
-            padding: 20px;
+        .botao:disabled{
+            transform: scale(1);
+            opacity: 0.2;
+            cursor: unset;
+        }
+
+        #lista {
+            margin-top: 40px;
             list-style: none;
-            border-radius: 8px;
 
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        #caixa-lista li:hover {
-            background-color: rgba(255, 1, 1, 0.568);
-            cursor: pointer;
+        .tarefa {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+
+            width: 350px;
+            padding: 20px;
+            background-color: var(--fundoReverso);
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308);
+        }
+
+        .tarefa h2 {
+            font-size: 1em;
+            text-wrap: wrap;
         }
     </style>
 </head>
 <body>
     <main>
-        <div id="caixa">
-            <h1>Oque você quer fazer?</h1>
-            <input id="tarefa" type="text" placeholder="Eu quero fazer..." maxlength="80">
-            <button id="marcar">Enviar</button>
+        <div id="painel">
+            <h1>Check List</h1>
+            <form id="form">
+                <input id="input" type="text" placeholder="Adicione uma tarefa" maxlength="25">
+                <button id="enviar" class="botao" disabled>
+                    <i class="fa-solid fa-circle-plus"></i>
+                </button>
+            </form>
         </div>
-        <ul id="caixa-lista">
-            
+        <ul id="lista">
+            <!-- <li class="tarefa">
+                <button class="concluir botao">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </button>
+                <h2>aaaaaaaaaaaaaaaaaaaaaaaaa</h2>
+                <button class="apagar botao">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </li> -->
         </ul>
     </main>
-
     <script>
-        let lista = document.querySelector('#caixa-lista')
-        let input = document.querySelector('#tarefa')
-        let botao = document.querySelector('#marcar')
+        const lista = document.getElementById('lista')
+        const enviar = document.getElementById('enviar')
+        const input = document.getElementById('input')
+        const form = document.getElementById('form')
 
-        // carrega lista quando abrir a pagina
-        carregar()
-
-        // evento botao
-        botao.addEventListener('click', () => {
-        
-        // se o input vazio, para
-            if (input.value === '')return
-                    const li = document.createElement('li')
-
-                    li.innerText = input.value
-
-                    // remove ao clicar e salva
-                    li.addEventListener('click', () => {
-                        li.remove()
-                        salvar()
-                    })
-                    lista.appendChild(li)
-                    salvar() // salva ao adicionar
-                    input.value = ''                 
+        input.addEventListener('input', () => {
+            if(input.value === ''){
+                enviar.disabled = true
+            }else{
+                enviar.disabled = false
+            }
         })
 
-        //======FUNCOES=======
-        function salvar() {
-            const itens = []
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
 
-            document.querySelectorAll('#caixa-lista li').forEach(li => {
-                itens.push(li.innerText)
+            
+            const tarefa = document.createElement('li')
+            tarefa.classList.add('tarefa')
+
+            const concluir = document.createElement('button')
+            concluir.classList.add('concluir')
+            concluir.classList.add('botao')
+
+            const eConcluir = document.createElement('i')
+            eConcluir.classList.add('fa-regular')
+            eConcluir.classList.add('fa-circle-check')
+            
+
+            let h2 = document.createElement('h2')
+            h2.textContent = input.value
+
+            const apagar = document.createElement('button')
+            apagar.classList.add('apagar')
+            apagar.classList.add('botao')
+
+            const eApagar = document.createElement('i')
+            eApagar.classList.add('fa-solid')
+            eApagar.classList.add('fa-trash-can')
+
+            concluir.appendChild(eConcluir)
+            apagar.appendChild(eApagar)
+            tarefa.appendChild(concluir)
+            tarefa.appendChild(h2)
+            tarefa.appendChild(apagar)
+            lista.appendChild(tarefa)   
+
+            input.value = ""
+            enviar.disabled = true
+        })
+        
+
+        lista.addEventListener('click', (e) => {
+                const botao = e.target.closest('button')
+                if(!botao) return
+
+                if(botao.classList.contains('apagar')){
+
+                    botao.closest('.tarefa').remove()
+
+                }else if(botao.classList.contains('concluir')){
+
+                    const h2 = botao.closest('.tarefa').querySelector('h2')
+                    h2.style.textDecoration = 'line-through'
+                    botao.disabled = true
+                }
             })
-                localStorage.setItem('checklist', JSON.stringify(itens))
-        }
-
-        function carregar() {
-            const dados = JSON.parse(localStorage.getItem('checklist'))
-
-            if (!dados) return
-
-            dados.forEach(texto => {
-                const li = document.createElement('li')
-                li.innerText = texto
-
-                li.addEventListener('click', () => {
-                    li.remove()
-                    salvar()
-                })
-
-                lista.appendChild(li)
-            })
-        }
-
-        //obs: uma maneira mais resumida sobre tudo
     </script>
 </body>
 </html>
