@@ -1,123 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://kit.fontawesome.com/ac52fd1507.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/ac52fd1507.js"
+      crossorigin="anonymous"
+    ></script>
     <style>
-        :root {
-            --fundo: #6F618C;
-            --destaque: #4F3673;
-            --fundoReverso: #8a6897;
-        }
+      :root {
+        --fundo: #6f618c;
+        --destaque: #4f3673;
+        --fundoReverso: #8a6897;
+      }
 
-        * {
-            padding: 0px;
-            margin: 0px;
-            box-sizing: border-box;
-        }
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
 
-        body {
-            background-color: var(--fundo);
-            color: white;
-            font: normal 1em arial;
+      body {
+        background-color: var(--fundo);
+        color: white;
+        font: normal 1em arial;
 
-            display: flex;
-            justify-content: center;
-            text-align: center;
-        }
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
 
-        #painel {
-            width: max-content;
-            margin-top: 40px;
-            background-color: var(--destaque);
-            padding: 60px;
-            border-radius: 10px;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.438);
+      #painel {
+        width: max-content;
+        margin-top: 40px;
+        background-color: var(--destaque);
+        padding: 60px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.438);
 
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
 
-        form {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+      form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-        }
+      #input {
+        padding: 8px;
+        border-radius: 5px;
+        border: none;
+        text-align: center;
+      }
 
-        #input {
-            padding: 8px;
-            border-radius: 5px;
-            border: none;
-            text-align: center;
-        }
+      .botao {
+        font-size: 1.5em;
+        color: white;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
 
-        .botao {
-            font-size: 1.5em;
-            color: white;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            transition: all .3s ease;
-        }
+      .botao:hover {
+        transform: scale(1.1);
+      }
 
-        .botao:hover {
-            transform: scale(1.1);
-        }
+      .botao:active {
+        transform: scale(1);
+      }
 
-        .botao:active {
-            transform: scale(1);
-        }
+      .botao:disabled {
+        transform: scale(1);
+        opacity: 0.2;
+        cursor: unset;
+      }
 
-        .botao:disabled{
-            transform: scale(1);
-            opacity: 0.2;
-            cursor: unset;
-        }
+      #lista {
+        margin-top: 40px;
+        list-style: none;
 
-        #lista {
-            margin-top: 40px;
-            list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
 
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+      .tarefa {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
 
-        .tarefa {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
+        width: 350px;
+        padding: 20px;
+        background-color: var(--fundoReverso);
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308);
+      }
 
-            width: 350px;
-            padding: 20px;
-            background-color: var(--fundoReverso);
-            border-radius: 10px;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308);
-        }
-
-        .tarefa h2 {
-            font-size: 1em;
-            text-wrap: wrap;
-        }
+      .tarefa h2 {
+        font-size: 1em;
+        text-wrap: wrap;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <div id="painel">
-            <h1>Check List</h1>
-            <form id="form">
-                <input id="input" type="text" placeholder="Adicione uma tarefa" maxlength="25">
-                <button id="enviar" class="botao" disabled>
-                    <i class="fa-solid fa-circle-plus"></i>
-                </button>
-            </form>
-        </div>
-        <ul id="lista">
-            <!-- <li class="tarefa">
+      <div id="painel">
+        <h1>Check List</h1>
+        <form id="form">
+          <input
+            id="input"
+            type="text"
+            placeholder="Adicione uma tarefa"
+            maxlength="25"
+          />
+          <button id="enviar" class="botao" disabled>
+            <i class="fa-solid fa-circle-plus"></i>
+          </button>
+        </form>
+      </div>
+      <ul id="lista">
+        <!-- <li class="tarefa">
                 <button class="concluir botao">
                         <i class="fa-regular fa-circle-check"></i>
                     </button>
@@ -126,76 +133,74 @@
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
             </li> -->
-        </ul>
+      </ul>
     </main>
     <script>
-        const lista = document.getElementById('lista')
-        const enviar = document.getElementById('enviar')
-        const input = document.getElementById('input')
-        const form = document.getElementById('form')
+      const lista = document.getElementById("lista");
+      const enviar = document.getElementById("enviar");
+      const input = document.getElementById("input");
+      const form = document.getElementById("form");
 
-        input.addEventListener('input', () => {
-            if(input.value === ''){
-                enviar.disabled = true
-            }else{
-                enviar.disabled = false
-            }
-        })
+      // Desabilita ou habilita o botao
+      input.addEventListener("input", () => {
+        if (input.value.trim() === "") {
+          enviar.disabled = true;
+        } else {
+          enviar.disabled = false;
+        }
+      });
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault()
+      // Quando enviar deve .... 
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-            
-            const tarefa = document.createElement('li')
-            tarefa.classList.add('tarefa')
+        const tarefa = document.createElement("li");
+        tarefa.classList.add("tarefa");
 
-            const concluir = document.createElement('button')
-            concluir.classList.add('concluir')
-            concluir.classList.add('botao')
+        const concluir = document.createElement("button");
+        concluir.classList.add("concluir");
+        concluir.classList.add("botao");
 
-            const eConcluir = document.createElement('i')
-            eConcluir.classList.add('fa-regular')
-            eConcluir.classList.add('fa-circle-check')
-            
+        const eConcluir = document.createElement("i");
+        eConcluir.classList.add("fa-regular");
+        eConcluir.classList.add("fa-circle-check");
 
-            let h2 = document.createElement('h2')
-            h2.textContent = input.value
+        let h2 = document.createElement("h2");
+        h2.textContent = input.value;
 
-            const apagar = document.createElement('button')
-            apagar.classList.add('apagar')
-            apagar.classList.add('botao')
+        const apagar = document.createElement("button");
+        apagar.classList.add("apagar");
+        apagar.classList.add("botao");
 
-            const eApagar = document.createElement('i')
-            eApagar.classList.add('fa-solid')
-            eApagar.classList.add('fa-trash-can')
+        const eApagar = document.createElement("i");
+        eApagar.classList.add("fa-solid");
+        eApagar.classList.add("fa-trash-can");
 
-            concluir.appendChild(eConcluir)
-            apagar.appendChild(eApagar)
-            tarefa.appendChild(concluir)
-            tarefa.appendChild(h2)
-            tarefa.appendChild(apagar)
-            lista.appendChild(tarefa)   
+        concluir.appendChild(eConcluir);
+        apagar.appendChild(eApagar);
+        tarefa.appendChild(concluir);
+        tarefa.appendChild(h2);
+        tarefa.appendChild(apagar);
+        lista.appendChild(tarefa);
 
-            input.value = ""
-            enviar.disabled = true
-        })
-        
+        input.value = "";
+        enviar.disabled = true;
+      });
 
-        lista.addEventListener('click', (e) => {
-                const botao = e.target.closest('button')
-                if(!botao) return
+      // Nas tarefas quando clicar deve.... 
+      lista.addEventListener("click", (e) => {
+        const botao = e.target.closest("button");
+        if (!botao) return;
 
-                if(botao.classList.contains('apagar')){
+        if (botao.classList.contains("apagar")) {
+          botao.closest(".tarefa").remove();
+        } else if (botao.classList.contains("concluir")) {
+          const h2 = botao.closest(".tarefa").querySelector("h2");
+          h2.style.textDecoration = "line-through";
+          botao.disabled = true;
+        }
+      });
 
-                    botao.closest('.tarefa').remove()
-
-                }else if(botao.classList.contains('concluir')){
-
-                    const h2 = botao.closest('.tarefa').querySelector('h2')
-                    h2.style.textDecoration = 'line-through'
-                    botao.disabled = true
-                }
-            })
     </script>
-</body>
+  </body>
 </html>
